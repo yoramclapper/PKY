@@ -30,8 +30,12 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+LOCAL_APPS = [
+    'budget.apps.BudgetConfig',
+]
 
-INSTALLED_APPS = [
+
+CORE_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+INSTALLED_APPS = LOCAL_APPS + CORE_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
