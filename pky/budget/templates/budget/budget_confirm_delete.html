@@ -1,0 +1,10 @@
+{% extends "budget/index.html" %}
+
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    {{ form.as_table }}
+    <input type="submit" value="Opslaan">
+</form>
+{% endblock %}
