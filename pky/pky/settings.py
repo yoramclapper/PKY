@@ -44,7 +44,11 @@ CORE_APPS = [
     'django.contrib.staticfiles',
 ]
 
-INSTALLED_APPS = LOCAL_APPS + CORE_APPS
+THIRD_PARTY_APPS = [
+    'bootstrap5',
+]
+
+INSTALLED_APPS = LOCAL_APPS + CORE_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
