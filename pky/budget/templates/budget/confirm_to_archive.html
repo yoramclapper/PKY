@@ -1,0 +1,9 @@
+{% extends "budget/index.html" %}
+
+{% block main %}
+<p>Een nieuw registratieformulier wordt aangemaakt, wilt u de huidige registraties opslaan in het archief?</p>
+<ul>
+  <li><a href="{% url 'save_to_archive' %}">Ja</a></li>
+  <li><a href="{% url 'create_actual'%}">Nee (de huidige registratie wordt verwijderd)</a></li>
+</ul>
+{% endblock %}

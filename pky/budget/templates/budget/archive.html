@@ -1,5 +1,14 @@
 {% extends "budget/index.html" %}
 
 {% block main %}
-<p>Archive</p>
+<h1>Archive</h1>
+<ul>
+  {% for record in archive %}
+    <li>{{record.sheet_name}}</li>
+    <li>{{record.sheet_name}}</li>
+  {% empty %}
+    <li>Geen registraties beschikbaar.</li>
+  {% endfor %}
+</ul>
+
 {% endblock %}

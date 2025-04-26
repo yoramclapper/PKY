@@ -18,17 +18,13 @@ class Budget(models.Model):
 
 
 class Actual(models.Model):
-    name = models.CharField(max_length=50)
-    start_date = models.DateField()
-    end_date = models.DateField(blank=True, null=True)
+    sheet_name = models.CharField(max_length=50)
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
     actual = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
-    creation_date = models.DateTimeField(auto_now_add=True)
 
 
 class Archive(models.Model):
-    name = models.CharField(max_length=50)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    sheet_name = models.CharField(max_length=50)
     budget = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     actual = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
+    creation_date = models.DateTimeField(auto_now_add=True)
