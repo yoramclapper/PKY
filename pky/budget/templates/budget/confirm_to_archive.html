@@ -1,9 +1,20 @@
 {% extends "budget/index.html" %}
 
 {% block main %}
-<p>Een nieuw registratieformulier wordt aangemaakt, wilt u de huidige registraties opslaan in het archief?</p>
-<ul>
-  <li><a href="{% url 'save_to_archive' %}">Ja</a></li>
-  <li><a href="{% url 'create_actual'%}">Nee (de huidige registratie wordt verwijderd)</a></li>
-</ul>
+<div class="ms-3">
+  <div class="row mt-5 mb-3">
+    <div class="col">
+      <h4>Wilt u de huidige registraties opslaan in het archief?</h4>
+    </div>
+  </div>
+
+  <div class="row justify-content-start">
+    <div class="col-auto">
+      <a type="button" class="btn btn-success" href="{% url 'save_to_archive' %}">Ja</a>
+    </div>
+    <div class="col-auto">
+      <a type="button" class="btn btn-danger" href="{% url 'create_actual'%}">Nee (de huidige registratie wordt verwijderd)</a>
+    </div>
+  </div>
+</div>
 {% endblock %}

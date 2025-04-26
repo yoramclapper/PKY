@@ -18,9 +18,9 @@ class ActualsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['ref_actual'] = Actual.objects.all()[0]
-        context['inkomen'] = Actual.objects.filter(budget__category="IN")
-        context['vast'] = Actual.objects.filter(budget__category="VAST")
-        context['flex'] = Actual.objects.filter(budget__category="FLEX")
+        context['inkomen'] = Actual.objects.filter(budget__category="IN").order_by('-budget__budget')
+        context['vast'] = Actual.objects.filter(budget__category="VAST").order_by('-budget__budget')
+        context['flex'] = Actual.objects.filter(budget__category="FLEX").order_by('-budget__budget')
         return context
 
 
@@ -75,9 +75,9 @@ class BudgetView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['inkomen'] = Budget.objects.filter(category="IN")
-        context['vast'] = Budget.objects.filter(category="VAST")
-        context['flex'] = Budget.objects.filter(category="FLEX")
+        context['inkomen'] = Budget.objects.filter(category="IN").order_by('-budget')
+        context['vast'] = Budget.objects.filter(category="VAST").order_by('-budget')
+        context['flex'] = Budget.objects.filter(category="FLEX").order_by('-budget')
         return context
 
 

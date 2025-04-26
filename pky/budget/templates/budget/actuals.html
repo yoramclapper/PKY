@@ -1,77 +1,92 @@
 {% extends "budget/index.html" %}
 
 {% block main %}
-<h1>{{ref_actual.sheet_name}}</h1>
-<a href="{% url 'confirm_to_archive'%}">Nieuwe registratie aanmaken</a>
-<table>
-    <thead>
-        <tr>
-            <th>Inkomen</th>
-        </tr>
-        <tr>
-            <th>Naam</th>
-            <th>Budget</th>
-            <th>Werkelijk</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for actual in inkomen %}
-            <tr>
-                <td>{{actual.budget.name}}</td>
-                <td>{{actual.budget.budget}}</td>
-                <td>{{actual.actual}}</td>
-                <td><a href="{% url 'update_actual' actual.pk %}">Wijzig</a></td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="row mt-3">
+    <div class="col">
+        <h2>{{ref_actual.sheet_name}}</h2>
+    </div>
+</div>
+<div class="row mt-3 mb-3">
+    <div class="col">
+        <a type="button" class="btn btn-primary" href="{% url 'confirm_to_archive'%}">Nieuwe registratie aanmaken</a>
+    </div>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Vaste lasten</th>
-        </tr>
-        <tr>
-            <th>Naam</th>
-            <th>Budget</th>
-            <th>Werkelijk</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for actual in vast %}
-            <tr>
-                <td>{{actual.budget.name}}</td>
-                <td>{{actual.budget.budget}}</td>
-                <td>{{actual.actual}}</td>
-                <td><a href="{% url 'update_actual' actual.pk %}">Wijzig</a></td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<table>
-    <thead>
-        <tr>
-            <th>Flexibele lasten</th>
-        </tr>
-        <tr>
-            <th>Naam</th>
-            <th>Budget</th>
-            <th>Werkelijk</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for actual in flex %}
-            <tr>
-                <td>{{actual.budget.name}}</td>
-                <td>{{actual.budget.budget}}</td>
-                <td>{{actual.actual}}</td>
-                <td><a href="{% url 'update_actual' actual.pk %}">Wijzig</a></td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="row">
+    <div class ="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Inkomen</th>
+                </tr>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Budget</th>
+                    <th scope="col">Werkelijk</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for actual in inkomen %}
+                    <tr>
+                        <td>{{actual.budget.name}}</td>
+                        <td>{{actual.budget.budget}}</td>
+                        <td>{{actual.actual}}</td>
+                        <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'update_actual' actual.pk %}">Wijzig</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class ="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vaste lasten</th>
+                </tr>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Budget</th>
+                    <th scope="col">Werkelijk</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for actual in vast %}
+                    <tr>
+                        <td>{{actual.budget.name}}</td>
+                        <td>{{actual.budget.budget}}</td>
+                        <td>{{actual.actual}}</td>
+                        <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'update_actual' actual.pk %}">Wijzig</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class ="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Flexibele lasten</th>
+                </tr>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Budget</th>
+                    <th scope="col">Werkelijk</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for actual in flex %}
+                    <tr>
+                        <td>{{actual.budget.name}}</td>
+                        <td>{{actual.budget.budget}}</td>
+                        <td>{{actual.actual}}</td>
+                        <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'update_actual' actual.pk %}">Wijzig</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

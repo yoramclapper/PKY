@@ -1,10 +1,14 @@
 {% extends "budget/index.html" %}
 
+{% load crispy_forms_tags %}
+
 {% block main %}
-<form method="post">
-    {% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    {{ form.as_table }}
-    <input type="submit" value="Opslaan">
-</form>
+<div class="mt-5 ms-3">
+    <form method="post">
+        {% csrf_token %}
+        <p>Wilt u het budget voor "{{ object }}" verwijderen?</p>
+        {{ form|crispy }}
+        <input type="submit" class="btn btn-danger" value="Verwijder">
+    </form>
+</div>
 {% endblock %}

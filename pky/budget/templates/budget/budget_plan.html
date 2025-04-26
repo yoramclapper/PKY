@@ -1,77 +1,87 @@
 {% extends "budget/index.html" %}
 
 {% block main %}
-<a href="{% url 'create_budget' %}">Budget toevoegen</a>
+<div class="row mt-5 mb-3">
+    <div class="col">
+        <a type="button" class="btn btn-primary" href="{% url 'create_budget' %}">Budget toevoegen</a>
+    </div>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <th>Inkomen</th>
-        </tr>
-        <tr>
-            <th>Naam</th>
-            <th>Budget</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for budget in inkomen %}
-            <tr>
-                <td>{{budget.name}}</td>
-                <td>{{budget.budget}}</td>
-                <td><a href="{% url 'update_budget' budget.pk %}">Wijzig</a></td>
-                <td><a href="{% url 'delete_budget' budget.pk %}">Verwijder</a></td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<table>
-    <thead>
-        <tr>
-            <th>Vaste lasten</th>
-        </tr>
-        <tr>
-            <th>Naam</th>
-            <th>Budget</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for budget in vast %}
-            <tr>
-                <td>{{budget.name}}</td>
-                <td>{{budget.budget}}</td>
-                <td><a href="{% url 'update_budget' budget.pk %}">Wijzig</a></td>
-                <td><a href="{% url 'delete_budget' budget.pk %}">Verwijder</a></td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<table>
-    <thead>
-        <tr>
-            <th>Flexibele lasten</th>
-        </tr>
-        <tr>
-            <th>Naam</th>
-            <th>Budget</th>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for budget in flex %}
-            <tr>
-                <td>{{budget.name}}</td>
-                <td>{{budget.budget}}</td>
-                <td><a href="{% url 'update_budget' budget.pk %}">Wijzig</a></td>
-                <td><a href="{% url 'delete_budget' budget.pk %}">Verwijder</a></td>
-            </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="row">
+    <div class ="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Inkomen</th>
+                </tr>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Budget</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for budget in inkomen %}
+                    <tr>
+                        <td>{{budget.name}}</td>
+                        <td>{{budget.budget}}</td>
+                        <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'update_budget' budget.pk %}">Wijzig</a></td>
+                        <td><a type="button" class="btn btn-outline-danger btn-sm" href="{% url 'delete_budget' budget.pk %}">Verwijder</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class ="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Vaste lasten</th>
+                </tr>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Budget</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for budget in vast %}
+                    <tr>
+                        <td>{{budget.name}}</td>
+                        <td>{{budget.budget}}</td>
+                        <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'update_budget' budget.pk %}">Wijzig</a></td>
+                        <td><a type="button" class="btn btn-outline-danger btn-sm" href="{% url 'delete_budget' budget.pk %}">Verwijder</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class ="col">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Flexibele lasten</th>
+                </tr>
+                <tr>
+                    <th scope="col">Naam</th>
+                    <th scope="col">Budget</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for budget in flex %}
+                    <tr>
+                        <td>{{budget.name}}</td>
+                        <td>{{budget.budget}}</td>
+                        <td><a type="button" class="btn btn-outline-secondary btn-sm" href="{% url 'update_budget' budget.pk %}">Wijzig</a></td>
+                        <td><a type="button" class="btn btn-outline-danger btn-sm" href="{% url 'delete_budget' budget.pk %}">Verwijder</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

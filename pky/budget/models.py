@@ -8,9 +8,9 @@ class Budget(models.Model):
         ("VAST", "Vaste lasten"),
         ("FLEX", "Flexibele lasten"),
     ]
-    name = models.CharField(max_length=50, unique=True)
-    budget = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
-    category = models.CharField(max_length=5, choices=CATEGORIES)
+    name = models.CharField(max_length=50, unique=True, verbose_name="Naam")
+    budget = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)], verbose_name="Budget")
+    category = models.CharField(max_length=5, choices=CATEGORIES, verbose_name="Categorie")
     active = models.BooleanField(default=True)
 
     def __str__(self):
@@ -18,7 +18,7 @@ class Budget(models.Model):
 
 
 class Actual(models.Model):
-    sheet_name = models.CharField(max_length=50)
+    sheet_name = models.CharField(max_length=50, verbose_name="Naam registratieblad")
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
     actual = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
 
