@@ -25,6 +25,12 @@ class Actual(models.Model):
 
 class Archive(models.Model):
     sheet_name = models.CharField(max_length=50)
+    creation_date = models.DateTimeField(auto_now_add=True)
+
+
+class ArchiveRecord(models.Model):
+    archive = models.ForeignKey(Archive, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, unique=True, verbose_name="Naam")
     budget = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
     actual = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
-    creation_date = models.DateTimeField(auto_now_add=True)
+    category = models.CharField(max_length=5, choices=Budget.CATEGORIES, verbose_name="Categorie")
