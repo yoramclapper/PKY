@@ -81,9 +81,13 @@ class BudgetView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        results = Budget.get_results()
         context['inkomen'] = Budget.objects.filter(category="IN").order_by('-budget')
         context['vast'] = Budget.objects.filter(category="VAST").order_by('-budget')
         context['flex'] = Budget.objects.filter(category="FLEX").order_by('-budget')
+        context['inkomen_kaart'] = results['income']
+        context['uitgaven_kaart'] = results['expense']
+        context['balans_kaart'] = results['balance']
         return context
 
 

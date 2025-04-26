@@ -13,6 +13,12 @@ class Budget(models.Model):
     category = models.CharField(max_length=5, choices=CATEGORIES, verbose_name="Categorie")
     active = models.BooleanField(default=True)
 
+    @staticmethod
+    def get_results() -> dict[str, float]:
+        income = sum([budget.budget for budget in Budget.objects.filter(category="IN")])
+        expense = sum([budget.budget for budget in Budget.objects.filter(category__in=["VAST", "FLEX"])])
+        return {'income': income, 'expense': expense, 'balance': income - expense}
+
     def __str__(self):
         return self.name
 

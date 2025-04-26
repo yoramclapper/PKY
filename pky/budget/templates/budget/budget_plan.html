@@ -5,6 +5,30 @@
     <div class="col">
         <a type="button" class="btn btn-primary" href="{% url 'create_budget' %}">Budget toevoegen</a>
     </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">Totaal inkomen</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{inkomen_kaart}}</h5>
+                </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">Totaal uitgaven</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{uitgaven_kaart}}</h5>
+                </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <h5 class="card-header">Balans</h5>
+                <div class="card-body">
+                    <h5 class="card-title">{{balans_kaart}}</h5>
+                </div>
+        </div>
+    </div>
 </div>
 
 <div class="row">
