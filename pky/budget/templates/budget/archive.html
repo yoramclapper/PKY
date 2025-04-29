@@ -7,14 +7,18 @@
   </div>
   <div class="row">
     <div class="list-group">
-      {% for object in archive_objects %}
-        <a href="{% url 'archive_records' object.pk %}" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{object.sheet_name}}</h5>
-          </div>
-          <small class="text-body-secondary">{{object.creation_date}}</small>
-        </a>
-      {% endfor %}
+      {% if archive_objects %}
+        {% for object in archive_objects %}
+          <a href="{% url 'archive_records' object.pk %}" class="list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{object.sheet_name}}</h5>
+            </div>
+            <small class="text-body-secondary">{{object.creation_date}}</small>
+          </a>
+        {% endfor %}
+      {% else %}
+          <p>Er zijn nog geen registraties gearchiveerd</p>
+      {% endif %}
     </div>
   </div>
 </div>
