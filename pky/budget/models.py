@@ -23,7 +23,7 @@ class Budget(models.Model):
 class Actual(models.Model):
     sheet_name = models.CharField(max_length=50, verbose_name="Naam registratieblad")
     budget = models.ForeignKey(Budget, on_delete=models.CASCADE)
-    actual = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)])
+    actual = models.DecimalField(max_digits=6, decimal_places=2, validators=[MinValueValidator(0)], verbose_name='Werkelijk bedrag')
 
 
 class Archive(models.Model):
